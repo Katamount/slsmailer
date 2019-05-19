@@ -1,7 +1,7 @@
-import ContactFormData from '../ContactFormData';
-import { IEmailConfig } from '../util/IEmailConfig';
-import { fieldsMock } from './fieldsMock';
-import getEmailConfig from '../util/getEmailConfig';
+import ContactFormData from '../src/ContactFormData';
+import { IEmailConfig } from '../src/util/IEmailConfig';
+import { mockFields } from './fieldsMock';
+import getEmailConfig from '../src/util/getEmailConfig';
 
 describe("Contact Form Tests", () => {
 
@@ -12,7 +12,7 @@ describe("Contact Form Tests", () => {
         // const emailConf = emailConfig[0];
             try{
                 const contactData = new ContactFormData(emailConf.domain, emailConf.email, "hello world");
-                const fields = fieldsMock();
+                const fields = mockFields();
                 contactData.setFields(fields);
 
                 await contactData.validate();
@@ -35,14 +35,11 @@ describe("Contact Form Tests", () => {
             try {
                 
                 const contactData = new ContactFormData(emailConf.domain, emailConf.email, "hello world");
-                
                 await contactData.validate();
-                
                 const emailContent = contactData.formatString();
                 // console.info(emailContent);
                 expect(emailContent).toContain(emailConf.email);
                 expect(emailContent).toContain("hello world");
-                
     
             } catch (error) {
                 console.error(error);

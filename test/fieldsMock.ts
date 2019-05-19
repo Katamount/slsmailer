@@ -3,6 +3,6 @@ interface IFieldSet{
     name: string;
     subject: string;
 }
-export function fieldsMock(): IFieldSet {
+export function mockFields(): IFieldSet {
     return {name: "bob", phone: "4345555555", subject: "hi"};
 }
