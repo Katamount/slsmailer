@@ -1,4 +1,5 @@
 # SLSMailer (Serverless Mailer)
+A Contact form emailer for multiple websites. This handles the contact form submission and emails it to the correct email recipient depending on the domain name set in the request.
 
 ## Technologies used
 - [AWS SES](https://aws.amazon.com/ses/)
