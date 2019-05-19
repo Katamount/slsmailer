@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+      "experimentalDecorators": true,
+    "lib": [
+      "es2017"
+    ],
+    "moduleResolution": "node",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "sourceMap": true,
+    "target": "es2017",
+    "resolveJsonModule": true,
+    "esModuleInterop": true, 
+    "module": "commonjs",                     /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */
+    "rootDir": "./",                       /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */
+    "strict": true,                           /* Enable all strict type-checking options. */
+    "strictNullChecks": true,              /* Enable strict null checks. */
+    "noImplicitThis": true,                /* Raise error on 'this' expressions with an implied 'any' type. */
+    "noImplicitReturns": true,             /* Report error when not all code paths in function return a value. */
+    "outDir": "build"
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

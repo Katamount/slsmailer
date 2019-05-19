@@ -1,0 +1,22 @@
+service:
+  name: servless-mailer
+
+# Add the serverless-webpack plugin
+plugins:
+  - serverless-webpack
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+
+package:
+  exclude:
+    - test
+    
+functions:
+  emailContact:
+    handler: handler.emailContact
+    events:
+      - http:
+          method: POST
+          path: contactForm 

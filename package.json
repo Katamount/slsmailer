@@ -1,0 +1,29 @@
+{
+  "name": "aws-nodejs-typescript",
+  "version": "1.0.0",
+  "description": "Serverless webpack mailer using Typescript",
+  "main": "handler.js",
+  "scripts": {
+    "test": "npx jest"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.449.0",
+    "class-validator": "^0.9.1",
+    "source-map-support": "^0.5.10"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.17",
+    "@types/dotenv": "^6.1.1",
+    "@types/jest": "^24.0.12",
+    "@types/node": "^10.12.18",
+    "dotenv": "^8.0.0",
+    "jest": "^24.7.1",
+    "serverless-webpack": "^5.2.0",
+    "ts-jest": "^24.0.2",
+    "ts-loader": "^5.3.3",
+    "typescript": "^3.2.4",
+    "webpack": "^4.29.0"
+  },
+  "author": "The serverless webpack authors (https://github.com/elastic-coders/serverless-webpack)",
+  "license": "MIT"
+}

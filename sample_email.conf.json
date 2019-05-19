@@ -1,0 +1,10 @@
+[
+    {
+        "domain": "domainname.com"
+        , "email": "emailaddress@domainname.com"
+    }
+    , {
+        "domain": "otherdomain.com"
+        , "email": "otherdomain@gmail.com"
+    }
+]
