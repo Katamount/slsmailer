@@ -53,8 +53,7 @@ export default class ContactFormData {
                 Subject: ${this.subject}
                 Message: ${this.message}
                 Phone: ${this.phone}
-                Name: ${this.name}
-                `;
+                Name: ${this.name}`;
     }
 
     public async validate(): Promise<void> {
@@ -70,7 +69,7 @@ export default class ContactFormData {
                     }
                 }
             });
-            console.log(this.phone);
+
             console.error(messages);
 
             throw new Error(messages);
