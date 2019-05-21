@@ -8,7 +8,7 @@ import { SendEmailResponse, SendEmailRequest } from 'aws-sdk/clients/ses';
 import ContactFormData from '../src/ContactFormData';
 import { IEmailConfig } from '../src/util/IEmailConfig';
 import getEmailConfig from '../src/util/getEmailConfig';
-import { mockFields } from './fieldsMock';
+import { mockFields } from './mocks';
 
 describe("mailer tests", () => {
     
@@ -50,6 +50,7 @@ describe("mailer tests", () => {
                 
                 const mail = new Mailer(emailConf.domain, emailConfig, ses);
                 const params: SendEmailRequest = mail.getSESParams(mail.email, "hello there");
+                console.info(params);
                 expect(params.Message.Body.Text).toBeDefined();
                 expect(params.Message.Body.Text!.Data).toBe("hello there");
                 expect(params.Destination.ToAddresses![0]).toBe(mail.email);
@@ -58,7 +59,7 @@ describe("mailer tests", () => {
 
             } catch (error) {
                 console.error(error);
-                expect(error).toBeNull();
+                expect(error).toBeUndefined();
             }
         });
 

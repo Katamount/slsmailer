@@ -1,6 +1,6 @@
 import ContactFormData from '../src/ContactFormData';
 import { IEmailConfig } from '../src/util/IEmailConfig';
-import { mockFields } from './fieldsMock';
+import { mockFields } from './mocks';
 import getEmailConfig from '../src/util/getEmailConfig';
 
 describe("Contact Form Tests", () => {
