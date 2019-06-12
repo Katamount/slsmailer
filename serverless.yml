@@ -20,3 +20,5 @@ functions:
       - http:
           method: POST
           path: contactForm 
+    environment:
+      SES_EMAIL_SOURCE: ${env.SES_EMAIL_SOURCE}

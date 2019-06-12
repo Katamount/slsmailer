@@ -13,6 +13,10 @@ export function mockPayload(): IPayloadBody {
         , phone: undefined
         , subject: "Tester Email"
         , name: "Anonymous"
+        , captcha: {
+            secret: "adlkajd1234",
+            response: "200"
+        }
     }
 
     return payload;

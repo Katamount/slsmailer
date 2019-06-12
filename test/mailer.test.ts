@@ -4,14 +4,14 @@ conf()
 import Mailer from '../src/Mailer';
 import { config, SES } from 'aws-sdk';
 config.update({ region: 'us-east-1' });
-import { SendEmailResponse, SendEmailRequest } from 'aws-sdk/clients/ses';
-import ContactFormData from '../src/ContactFormData';
-import { IEmailConfig } from '../src/util/IEmailConfig';
+// import { SendEmailResponse, SendEmailRequest } from 'aws-sdk/clients/ses';
+// import ContactFormData from '../src/ContactFormData';
+// import { IEmailConfig } from '../src/util/IEmailConfig';
 import getEmailConfig from '../src/util/getEmailConfig';
-import { mockFields } from './mocks';
+// import { mockFields } from './mocks';
 
 describe("mailer tests", () => {
-    
+    const emailConfig = getEmailConfig();
     test("Mailer constructs and configures incorrectly, throw error", () => {
         try {
             const ses = new SES();
@@ -23,70 +23,70 @@ describe("mailer tests", () => {
         }
     });
 
-    const emailConfig = getEmailConfig();
-    emailConfig.forEach((emailConf: IEmailConfig) => {
+    
+    // emailConfig.forEach((emailConf: IEmailConfig) => {
 
-        test("Mailer constructs and configures correctly", () => {
-            try{
-                const ses = new SES();
+    //     test("Mailer constructs and configures correctly", () => {
+    //         try{
+    //             const ses = new SES();
                 
-                const mail = new Mailer(emailConf.domain, emailConfig, ses);
-                expect(mail.email).toBe(emailConf.email);
+    //             const mail = new Mailer(emailConf.domain, emailConfig, ses);
+    //             expect(mail.email).toBe(emailConf.email);
                 
-            } catch(error){
-                console.error(error);
-                expect(error).toBeUndefined();
-            }
+    //         } catch(error){
+    //             console.error(error);
+    //             expect(error).toBeUndefined();
+    //         }
 
 
 
-        });
+    //     });
 
     
 
-        test("SES Params set correctly", () => {
-            try {
-                const ses = new SES();
+    //     test("SES Params set correctly", () => {
+    //         try {
+    //             const ses = new SES();
                 
-                const mail = new Mailer(emailConf.domain, emailConfig, ses);
-                const params: SendEmailRequest = mail.getSESParams(mail.email, "hello there");
-                console.info(params);
-                expect(params.Message.Body.Text).toBeDefined();
-                expect(params.Message.Body.Text!.Data).toBe("hello there");
-                expect(params.Destination.ToAddresses![0]).toBe(mail.email);
-                expect(params.Source).toBe(process.env.SES_EMAIL_SOURCE);
-                
-
-            } catch (error) {
-                console.error(error);
-                expect(error).toBeUndefined();
-            }
-        });
-
-        test("Mailer sends email to recipient", async (done) => {
-            try {
-                const ses = new SES();
-                
-                const formData = new ContactFormData(emailConf.domain, emailConf.email, "Mailer test");
-                formData.setFields(mockFields());
-                await formData.validate();
-                const mail = new Mailer(formData.websiteUrl, emailConfig, ses);
-                expect(mail.email).toBe(emailConf.email);
-
-                mail.sendEmail(formData, (err: AWS.AWSError, data: SendEmailResponse) => {
-                    if (err) {
-                        throw err;
-                    }
-                    console.info(data);
-                    expect(data).toBeDefined();
-                    done();
-                });
+    //             const mail = new Mailer(emailConf.domain, emailConfig, ses);
+    //             const params: SendEmailRequest = mail.getSESParams(mail.email, "hello there");
+    //             console.info(params);
+    //             expect(params.Message.Body.Text).toBeDefined();
+    //             expect(params.Message.Body.Text!.Data).toBe("hello there");
+    //             expect(params.Destination.ToAddresses![0]).toBe(mail.email);
+    //             expect(params.Source).toBe(process.env.SES_EMAIL_SOURCE);
                 
 
-            } catch (error) {
-                console.error(error);
-                expect(error).toBeNull();
-            }
-        });
-    });
+    //         } catch (error) {
+    //             console.error(error);
+    //             expect(error).toBeUndefined();
+    //         }
+    //     });
+
+    //     test("Mailer sends email to recipient", async (done) => {
+    //         try {
+    //             const ses = new SES();
+                
+    //             const formData = new ContactFormData(emailConf.domain, emailConf.email, "Mailer test");
+    //             formData.setFields(mockFields());
+    //             await formData.validate();
+    //             const mail = new Mailer(formData.websiteUrl, emailConfig, ses);
+    //             expect(mail.email).toBe(emailConf.email);
+
+    //             mail.sendEmail(formData, (err: AWS.AWSError, data: SendEmailResponse) => {
+    //                 if (err) {
+    //                     throw err;
+    //                 }
+    //                 console.info(data);
+    //                 expect(data).toBeDefined();
+    //                 done();
+    //             });
+                
+
+    //         } catch (error) {
+    //             console.error(error);
+    //             expect(error).toBeNull();
+    //         }
+    //     });
+    // });
 });
